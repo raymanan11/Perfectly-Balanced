@@ -3,7 +3,7 @@ import java.lang.Math;
 
 public class PerfectlyBalanced {
     public static void main(String[] args) {
-        int digits = getDigits(1579);
+        double digits = getDigits(1579);
         System.out.println(digits);
 
     }
@@ -33,12 +33,16 @@ public class PerfectlyBalanced {
         return selection;
     }
 
-    public static int getDigits(int number) {
-        int digits = Math.log10(number);
-        System.out.println(digits);
-        //int num_digits = Math.ceil(digits);
-        return digits;
-
+    public static double getDigits(int number) {
+        double digits = Math.log10(number);
+        double num_digits = Math.ceil(digits);
+        int[] numbers = new int[(int)num_digits];
+        numbers[0] = number % 10;
+        for (int i = 1; i < (int)num_digits; i++) {
+            double floor_number = number / 10;
+            double floored = floor_number % 10;
+        }
+        return floored;
     }
 
 }
