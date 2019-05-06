@@ -33,16 +33,26 @@ public class PerfectlyBalanced {
         return selection;
     }
 
-    public static double getDigits(int number) {
+    public static int[] getDigits(int number) {
         double digits = Math.log10(number);
         double num_digits = Math.ceil(digits);
         int[] numbers = new int[(int)num_digits];
-        numbers[0] = number % 10;
+        // by using log function and ceiling that number we  get the number of integers in the array
+        numbers[(int)num_digits-1] = number % 10;
+        // gives the last number in user inputted string and saves it into last place in array
+        double floor_number = number / 10;
+        double floored = Math.floor(floor_number);
+        // gives us the remaining digits excluding the last digit in user inputted number
         for (int i = 1; i < (int)num_digits; i++) {
-            double floor_number = number / 10;
-            double floored = floor_number % 10;
+            double next_digit = floored % 10;
+            numbers[(int)num_digits - 1 - i] = (int)next_digit;
+            double to_be_floored = floored / 10;
+            double floored_nextdigit = Math.floor(to_be_floored);
+            floored = floored_nextdigit;
+            
         }
-        return floored;
+
+        return numbers;
     }
 
 }
