@@ -4,14 +4,19 @@ import java.lang.Math;
 public class PerfectlyBalanced {
     public static void main(String[] args) {
         int number = getNumber();
+        // calls getNumber() and gets validated user input which saves it into variable number 
         int[] digits = getDigits(number);
+        // variable number is then passed onto getDigits(number) when that is called and saves the user's array into variable called digits
         boolean increasing = isIncreasing(digits);
+        // method isIncreasing is called with parameter using variable digits to see if the array is increasing or not
         if (increasing == true) {
             System.out.printf("The digits of %d are in increasing order.", number);
         }
+        // if the array is increasing then user input is in increasing order
         else if (increasing == false) {
             System.out.printf("The digits of %d are not in increasing order.", number);
         }
+        // if the array is not increasing then user input is not in increasing order
 
     }
 
@@ -64,6 +69,7 @@ public class PerfectlyBalanced {
         }
 
         return numbers;
+        // returns the finished array numbers
     }
 
 }
