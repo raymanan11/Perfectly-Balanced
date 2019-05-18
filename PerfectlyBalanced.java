@@ -1,10 +1,13 @@
+// Raymond An
+// CECS 174
+// ID #: 018284615
 import java.util.Scanner;
 import java.lang.Math;
 
 public class PerfectlyBalanced {
     public static void main(String[] args) {
         int number = getNumber();
-        // calls getNumber() and gets validated user input which saves it into variable number 
+        // calls getNumber() and gets validated user input which saves it into variable number
         int[] digits = getDigits(number);
         // variable number is then passed onto getDigits(number) when that is called and saves the user's array into variable called digits
         boolean increasing = isIncreasing(digits);
@@ -23,7 +26,7 @@ public class PerfectlyBalanced {
     public static boolean isIncreasing(int[] values) {
         for (int i=0; i < values.length - 1; i++) {
 
-            if (values[i] > values[i+1] || values[i] == values[i+1]) {
+            if (values[i] >= values[i+1]) {
                 return false;
             }
             // for loop checks every index and determines if current index is greater than the next index
@@ -56,15 +59,16 @@ public class PerfectlyBalanced {
         numbers[last_array_element] = number % 10;
         // gives the last number in user inputted string and saves it into last place in array
         double floor_number = number / 10;
-        double floored = Math.floor(floor_number);
         // gives us the remaining digits excluding the last digit in user inputted number to be ran in the for loop
         for (int i = 1; i < (int)num_digits; i++) {
-            double next_digit = floored % 10;
+            double next_digit = floor_number % 10;
             numbers[last_array_element - i] = (int)next_digit;
-            // next digit is given by using modulo but this digit has to be divided by 10 then floored in order to get the next digits, which is why a for loop is needed
-            double to_be_floored = floored / 10;
-            double floored_nextdigit = Math.floor(to_be_floored);
-            floored = floored_nextdigit;
+            // next digit is given by using modulo but this digit has to be divided by 10 in order to get remaining digits, which is why a for loop is needed
+            // the digit that was given by next_digit would be saved into the array element based i in the for loop (numbers[last_array_element - i])
+            double to_be_floored = floor_number / 10;
+            floor_number = to_be_floored;
+            // floor_number is set equal to to_be_floored because it will exit the loop after and floor_number would then be the remaining digits
+            // because it was divided by 10 which chops off the last digit and enter for loop again until it ends
 
         }
 
@@ -73,4 +77,3 @@ public class PerfectlyBalanced {
     }
 
 }
-
